@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhisen.User.dao.TbYxNewMapper" >
+  <resultMap id="BaseResultMap" type="com.zhisen.User.entity.TbYxNew" >
+    <id column="yxid" property="yxid" jdbcType="VARCHAR" />
+    <result column="yxtitle" property="yxtitle" jdbcType="VARCHAR" />
+    <result column="yxpic" property="yxpic" jdbcType="VARCHAR" />
+    <result column="yxtime" property="yxtime" jdbcType="TIMESTAMP" />
+    <result column="yxstate" property="yxstate" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zhisen.User.entity.TbYxNew" extends="BaseResultMap" >
+    <result column="yxarticle" property="yxarticle" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yxid, yxtitle, yxpic, yxtime, yxstate
+  </sql>
+  <sql id="Blob_Column_List" >
+    yxarticle
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_yx_new
+    where yxid = #{yxid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_yx_new
+    where yxid = #{yxid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zhisen.User.entity.TbYxNew" >
+    insert into tb_yx_new (yxid, yxtitle, yxpic, 
+      yxtime, yxstate, yxarticle
+      )
+    values (#{yxid,jdbcType=VARCHAR}, #{yxtitle,jdbcType=VARCHAR}, #{yxpic,jdbcType=VARCHAR}, 
+      #{yxtime,jdbcType=TIMESTAMP}, #{yxstate,jdbcType=BIT}, #{yxarticle,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhisen.User.entity.TbYxNew" >
+    insert into tb_yx_new
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yxid != null" >
+        yxid,
+      </if>
+      <if test="yxtitle != null" >
+        yxtitle,
+      </if>
+      <if test="yxpic != null" >
+        yxpic,
+      </if>
+      <if test="yxtime != null" >
+        yxtime,
+      </if>
+      <if test="yxstate != null" >
+        yxstate,
+      </if>
+      <if test="yxarticle != null" >
+        yxarticle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yxid != null" >
+        #{yxid,jdbcType=VARCHAR},
+      </if>
+      <if test="yxtitle != null" >
+        #{yxtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="yxpic != null" >
+        #{yxpic,jdbcType=VARCHAR},
+      </if>
+      <if test="yxtime != null" >
+        #{yxtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yxstate != null" >
+        #{yxstate,jdbcType=BIT},
+      </if>
+      <if test="yxarticle != null" >
+        #{yxarticle,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhisen.User.entity.TbYxNew" >
+    update tb_yx_new
+    <set >
+      <if test="yxtitle != null" >
+        yxtitle = #{yxtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="yxpic != null" >
+        yxpic = #{yxpic,jdbcType=VARCHAR},
+      </if>
+      <if test="yxtime != null" >
+        yxtime = #{yxtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yxstate != null" >
+        yxstate = #{yxstate,jdbcType=BIT},
+      </if>
+      <if test="yxarticle != null" >
+        yxarticle = #{yxarticle,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where yxid = #{yxid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zhisen.User.entity.TbYxNew" >
+    update tb_yx_new
+    set yxtitle = #{yxtitle,jdbcType=VARCHAR},
+      yxpic = #{yxpic,jdbcType=VARCHAR},
+      yxtime = #{yxtime,jdbcType=TIMESTAMP},
+      yxstate = #{yxstate,jdbcType=BIT},
+      yxarticle = #{yxarticle,jdbcType=LONGVARCHAR}
+    where yxid = #{yxid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhisen.User.entity.TbYxNew" >
+    update tb_yx_new
+    set yxtitle = #{yxtitle,jdbcType=VARCHAR},
+      yxpic = #{yxpic,jdbcType=VARCHAR},
+      yxtime = #{yxtime,jdbcType=TIMESTAMP},
+      yxstate = #{yxstate,jdbcType=BIT}
+    where yxid = #{yxid,jdbcType=VARCHAR}
+  </update>
+</mapper>

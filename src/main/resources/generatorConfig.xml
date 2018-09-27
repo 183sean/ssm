@@ -39,7 +39,7 @@
         <!-- java模型生成器 -->
         <!-- targetProject:自动生成代码的位置 -->
         <javaModelGenerator targetPackage="com.zhisen.User.entity"
-                            targetProject="C:\Users\Administrator\Downloads\ssm-master\ssm-master\src\main\java"
+                            targetProject="E:\1Programfile\Sean\ssm\src\main\java"
                              >
             <!-- TODO enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true" />
@@ -50,14 +50,14 @@
         <!-- 必须的（1 required） -->
         <!-- map xml 生成器 -->
         <sqlMapGenerator targetPackage="com.zhisen.User.dao"
-                         targetProject="C:\Users\Administrator\Downloads\ssm-master\ssm-master\src\main\java">
+                         targetProject="E:\1Programfile\Sean\ssm\src\main\java">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- 可选的（0 or 1） -->
         <!-- mapper 或者就是dao接口生成器 -->
         <javaClientGenerator targetPackage="com.zhisen.User.dao"
-                             targetProject="C:\Users\Administrator\Downloads\ssm-master\ssm-master\src\main\java"
+                             targetProject="E:\1Programfile\Sean\ssm\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
@@ -74,16 +74,30 @@
             <!--&lt;!&ndash;//无论字段是什么类型，生成的类属性都是varchar。 可选的（0 or 1） 测试无效 &ndash;&gt;-->
             <!--&lt;!&ndash; <columnOverride column="city_code" jdbcType="VARCHAR" /> &ndash;&gt;-->
         <!--</table>-->
-        <table  tableName="tb_auser" domainObjectName="TbAuser"
+        <!--<table  tableName="tb_auser" domainObjectName="TbAuser"-->
+                <!--enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash; 忽略字段 可选的（0 or 1） &ndash;&gt;-->
+            <!--&lt;!&ndash; <ignoreColumn column="is_use" /> &ndash;&gt;-->
+            <!--&lt;!&ndash;//无论字段是什么类型，生成的类属性都是varchar。 可选的（0 or 1） 测试无效 &ndash;&gt;-->
+            <!--&lt;!&ndash; <columnOverride column="city_code" jdbcType="VARCHAR" /> &ndash;&gt;-->
+        <!--</table>-->
+        <table  tableName="tb_dm_new" domainObjectName="TbDmNew"
                 enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false">
-            <!-- 忽略字段 可选的（0 or 1） -->
-            <!-- <ignoreColumn column="is_use" /> -->
-            <!--//无论字段是什么类型，生成的类属性都是varchar。 可选的（0 or 1） 测试无效 -->
-            <!-- <columnOverride column="city_code" jdbcType="VARCHAR" /> -->
         </table>
-
-
+        <table  tableName="tb_yx_new" domainObjectName="TbYxNew"
+                enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table  tableName="tb_userluntang" domainObjectName="TbUserluntang"
+                enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table  tableName="tb_userpinlun" domainObjectName="TbUserpinlun"
+                enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
 
     </context>
 </generatorConfiguration>

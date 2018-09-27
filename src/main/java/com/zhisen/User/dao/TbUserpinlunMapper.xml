@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhisen.User.dao.TbUserpinlunMapper" >
+  <resultMap id="BaseResultMap" type="com.zhisen.User.entity.TbUserpinlun" >
+    <id column="plid" property="plid" jdbcType="INTEGER" />
+    <result column="plarticle" property="plarticle" jdbcType="VARCHAR" />
+    <result column="pltime" property="pltime" jdbcType="TIMESTAMP" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="plallid" property="plallid" jdbcType="VARCHAR" />
+    <result column="plstate" property="plstate" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    plid, plarticle, pltime, uid, plallid, plstate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_userpinlun
+    where plid = #{plid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_userpinlun
+    where plid = #{plid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhisen.User.entity.TbUserpinlun" >
+    insert into tb_userpinlun (plid, plarticle, pltime, 
+      uid, plallid, plstate)
+    values (#{plid,jdbcType=INTEGER}, #{plarticle,jdbcType=VARCHAR}, #{pltime,jdbcType=TIMESTAMP}, 
+      #{uid,jdbcType=INTEGER}, #{plallid,jdbcType=VARCHAR}, #{plstate,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhisen.User.entity.TbUserpinlun" >
+    insert into tb_userpinlun
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="plid != null" >
+        plid,
+      </if>
+      <if test="plarticle != null" >
+        plarticle,
+      </if>
+      <if test="pltime != null" >
+        pltime,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="plallid != null" >
+        plallid,
+      </if>
+      <if test="plstate != null" >
+        plstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="plid != null" >
+        #{plid,jdbcType=INTEGER},
+      </if>
+      <if test="plarticle != null" >
+        #{plarticle,jdbcType=VARCHAR},
+      </if>
+      <if test="pltime != null" >
+        #{pltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="plallid != null" >
+        #{plallid,jdbcType=VARCHAR},
+      </if>
+      <if test="plstate != null" >
+        #{plstate,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhisen.User.entity.TbUserpinlun" >
+    update tb_userpinlun
+    <set >
+      <if test="plarticle != null" >
+        plarticle = #{plarticle,jdbcType=VARCHAR},
+      </if>
+      <if test="pltime != null" >
+        pltime = #{pltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="plallid != null" >
+        plallid = #{plallid,jdbcType=VARCHAR},
+      </if>
+      <if test="plstate != null" >
+        plstate = #{plstate,jdbcType=BIT},
+      </if>
+    </set>
+    where plid = #{plid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhisen.User.entity.TbUserpinlun" >
+    update tb_userpinlun
+    set plarticle = #{plarticle,jdbcType=VARCHAR},
+      pltime = #{pltime,jdbcType=TIMESTAMP},
+      uid = #{uid,jdbcType=INTEGER},
+      plallid = #{plallid,jdbcType=VARCHAR},
+      plstate = #{plstate,jdbcType=BIT}
+    where plid = #{plid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhisen.User.dao.TbUserluntangMapper" >
+  <resultMap id="BaseResultMap" type="com.zhisen.User.entity.TbUserluntang" >
+    <id column="ltid" property="ltid" jdbcType="VARCHAR" />
+    <result column="lttitle" property="lttitle" jdbcType="VARCHAR" />
+    <result column="ltpic" property="ltpic" jdbcType="VARCHAR" />
+    <result column="lttime" property="lttime" jdbcType="TIMESTAMP" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="ltstate" property="ltstate" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zhisen.User.entity.TbUserluntang" extends="BaseResultMap" >
+    <result column="ltarticle" property="ltarticle" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ltid, lttitle, ltpic, lttime, uid, ltstate
+  </sql>
+  <sql id="Blob_Column_List" >
+    ltarticle
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_userluntang
+    where ltid = #{ltid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_userluntang
+    where ltid = #{ltid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zhisen.User.entity.TbUserluntang" >
+    insert into tb_userluntang (ltid, lttitle, ltpic, 
+      lttime, uid, ltstate, 
+      ltarticle)
+    values (#{ltid,jdbcType=VARCHAR}, #{lttitle,jdbcType=VARCHAR}, #{ltpic,jdbcType=VARCHAR}, 
+      #{lttime,jdbcType=TIMESTAMP}, #{uid,jdbcType=INTEGER}, #{ltstate,jdbcType=BIT}, 
+      #{ltarticle,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhisen.User.entity.TbUserluntang" >
+    insert into tb_userluntang
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ltid != null" >
+        ltid,
+      </if>
+      <if test="lttitle != null" >
+        lttitle,
+      </if>
+      <if test="ltpic != null" >
+        ltpic,
+      </if>
+      <if test="lttime != null" >
+        lttime,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="ltstate != null" >
+        ltstate,
+      </if>
+      <if test="ltarticle != null" >
+        ltarticle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ltid != null" >
+        #{ltid,jdbcType=VARCHAR},
+      </if>
+      <if test="lttitle != null" >
+        #{lttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ltpic != null" >
+        #{ltpic,jdbcType=VARCHAR},
+      </if>
+      <if test="lttime != null" >
+        #{lttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="ltstate != null" >
+        #{ltstate,jdbcType=BIT},
+      </if>
+      <if test="ltarticle != null" >
+        #{ltarticle,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhisen.User.entity.TbUserluntang" >
+    update tb_userluntang
+    <set >
+      <if test="lttitle != null" >
+        lttitle = #{lttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ltpic != null" >
+        ltpic = #{ltpic,jdbcType=VARCHAR},
+      </if>
+      <if test="lttime != null" >
+        lttime = #{lttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="ltstate != null" >
+        ltstate = #{ltstate,jdbcType=BIT},
+      </if>
+      <if test="ltarticle != null" >
+        ltarticle = #{ltarticle,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ltid = #{ltid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zhisen.User.entity.TbUserluntang" >
+    update tb_userluntang
+    set lttitle = #{lttitle,jdbcType=VARCHAR},
+      ltpic = #{ltpic,jdbcType=VARCHAR},
+      lttime = #{lttime,jdbcType=TIMESTAMP},
+      uid = #{uid,jdbcType=INTEGER},
+      ltstate = #{ltstate,jdbcType=BIT},
+      ltarticle = #{ltarticle,jdbcType=LONGVARCHAR}
+    where ltid = #{ltid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhisen.User.entity.TbUserluntang" >
+    update tb_userluntang
+    set lttitle = #{lttitle,jdbcType=VARCHAR},
+      ltpic = #{ltpic,jdbcType=VARCHAR},
+      lttime = #{lttime,jdbcType=TIMESTAMP},
+      uid = #{uid,jdbcType=INTEGER},
+      ltstate = #{ltstate,jdbcType=BIT}
+    where ltid = #{ltid,jdbcType=VARCHAR}
+  </update>
+</mapper>

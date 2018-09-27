@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhisen.User.dao.TbDmNewMapper" >
+  <resultMap id="BaseResultMap" type="com.zhisen.User.entity.TbDmNew" >
+    <id column="dmid" property="dmid" jdbcType="VARCHAR" />
+    <result column="dmtitle" property="dmtitle" jdbcType="VARCHAR" />
+    <result column="dmpic" property="dmpic" jdbcType="VARCHAR" />
+    <result column="dmtime" property="dmtime" jdbcType="TIMESTAMP" />
+    <result column="dmstate" property="dmstate" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zhisen.User.entity.TbDmNew" extends="BaseResultMap" >
+    <result column="dmarticle" property="dmarticle" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dmid, dmtitle, dmpic, dmtime, dmstate
+  </sql>
+  <sql id="Blob_Column_List" >
+    dmarticle
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_dm_new
+    where dmid = #{dmid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_dm_new
+    where dmid = #{dmid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zhisen.User.entity.TbDmNew" >
+    insert into tb_dm_new (dmid, dmtitle, dmpic, 
+      dmtime, dmstate, dmarticle
+      )
+    values (#{dmid,jdbcType=VARCHAR}, #{dmtitle,jdbcType=VARCHAR}, #{dmpic,jdbcType=VARCHAR}, 
+      #{dmtime,jdbcType=TIMESTAMP}, #{dmstate,jdbcType=BIT}, #{dmarticle,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhisen.User.entity.TbDmNew" >
+    insert into tb_dm_new
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dmid != null" >
+        dmid,
+      </if>
+      <if test="dmtitle != null" >
+        dmtitle,
+      </if>
+      <if test="dmpic != null" >
+        dmpic,
+      </if>
+      <if test="dmtime != null" >
+        dmtime,
+      </if>
+      <if test="dmstate != null" >
+        dmstate,
+      </if>
+      <if test="dmarticle != null" >
+        dmarticle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dmid != null" >
+        #{dmid,jdbcType=VARCHAR},
+      </if>
+      <if test="dmtitle != null" >
+        #{dmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dmpic != null" >
+        #{dmpic,jdbcType=VARCHAR},
+      </if>
+      <if test="dmtime != null" >
+        #{dmtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dmstate != null" >
+        #{dmstate,jdbcType=BIT},
+      </if>
+      <if test="dmarticle != null" >
+        #{dmarticle,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhisen.User.entity.TbDmNew" >
+    update tb_dm_new
+    <set >
+      <if test="dmtitle != null" >
+        dmtitle = #{dmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dmpic != null" >
+        dmpic = #{dmpic,jdbcType=VARCHAR},
+      </if>
+      <if test="dmtime != null" >
+        dmtime = #{dmtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dmstate != null" >
+        dmstate = #{dmstate,jdbcType=BIT},
+      </if>
+      <if test="dmarticle != null" >
+        dmarticle = #{dmarticle,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where dmid = #{dmid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zhisen.User.entity.TbDmNew" >
+    update tb_dm_new
+    set dmtitle = #{dmtitle,jdbcType=VARCHAR},
+      dmpic = #{dmpic,jdbcType=VARCHAR},
+      dmtime = #{dmtime,jdbcType=TIMESTAMP},
+      dmstate = #{dmstate,jdbcType=BIT},
+      dmarticle = #{dmarticle,jdbcType=LONGVARCHAR}
+    where dmid = #{dmid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhisen.User.entity.TbDmNew" >
+    update tb_dm_new
+    set dmtitle = #{dmtitle,jdbcType=VARCHAR},
+      dmpic = #{dmpic,jdbcType=VARCHAR},
+      dmtime = #{dmtime,jdbcType=TIMESTAMP},
+      dmstate = #{dmstate,jdbcType=BIT}
+    where dmid = #{dmid,jdbcType=VARCHAR}
+  </update>
+</mapper>
