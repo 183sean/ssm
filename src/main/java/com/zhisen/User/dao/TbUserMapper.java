@@ -1,6 +1,7 @@
 package com.zhisen.User.dao;
 
 import com.zhisen.User.entity.TbUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbUserMapper {
     int deleteByPrimaryKey(Integer uid);
@@ -14,4 +15,8 @@ public interface TbUserMapper {
     int updateByPrimaryKeySelective(TbUser record);
 
     int updateByPrimaryKey(TbUser record);
+
+    //根据用户名和密码查询用户
+    //注解的两个参数会自动封装成map集合，括号内即为键
+    TbUser findUserByNameAndPwd(@Param("name")String name, @Param("password")String password);
 }

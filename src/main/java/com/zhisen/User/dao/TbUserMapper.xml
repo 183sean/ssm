@@ -9,6 +9,13 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="ustate" property="ustate" jdbcType="BIT" />
   </resultMap>
+  <!--注意sql语句没有分号结尾  -->
+
+  <!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->
+  <select id="findUserByNameAndPwd" resultType="com.zhisen.User.entity.TbUser">
+		select * from Tb_user where usern=#{name} and userp=#{password}
+	</select>
+
   <sql id="Base_Column_List" >
     uid, usern, userp, sex, email, ustate
   </sql>

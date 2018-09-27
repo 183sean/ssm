@@ -1,0 +1,22 @@
+figure{
+	width: 900px;
+	height: 150px;
+	background-color: rgb(40,47,63);
+	margin: auto;
+	margin-top: 10px;
+	
+}
+figcaption{
+	width: 230px;
+	height: 118px;
+	background-color: white;
+	float: left;
+	margin:10px 20px;
+}
+.fig_right{
+	float: left;
+	margin:10px 20px;
+	color: white;
+	font-size: 20px;
+	
+}

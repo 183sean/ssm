@@ -1,0 +1,26 @@
+.article_reg{
+	background: url(../img/mainbg.png);
+	width: 1050px;
+	height: 550px;
+	float: left;
+}
+
+.article_reg_neirong{
+	width: 400px;
+	height: 300px;
+	border: dotted 6px cornflowerblue;
+	background-color: whitesmoke;
+	border-radius: 20px;
+	font-size: 24px;
+	margin: auto;
+	margin-top: 60px;
+	padding: 60px 300px;
+}
+.input_wid{
+	width: 300px;
+	height: 30px;
+}
+.submit_wid{
+	width: 100px;
+	height: 30px;
+}

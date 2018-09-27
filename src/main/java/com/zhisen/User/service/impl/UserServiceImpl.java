@@ -1,14 +1,26 @@
 package com.zhisen.User.service.impl;
 
+import com.zhisen.User.dao.TbUserMapper;
+import com.zhisen.User.entity.TbUser;
 import com.zhisen.User.service.UserService;
 import org.springframework.stereotype.Service;
 
-/**
- * @author Veng Su 1344114844@qq.com
- * @date 2018/5/19 22:07
- */
+import javax.annotation.Resource;
+
+
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
+
+    @Resource
+    private TbUserMapper tbUserMapper;
+
+    @Override
+    public TbUser login(String name, String password) {
+        // TODO Auto-generated method stub
+        TbUser tbUser = tbUserMapper.findUserByNameAndPwd(name, password);
+        return tbUser;
+    }
+
 
 }
