@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhisen.User.dao.TbAuserMapper" >
+  <resultMap id="BaseResultMap" type="com.zhisen.User.entity.TbAuser" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="ausern" property="ausern" jdbcType="VARCHAR" />
+    <result column="auserp" property="auserp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, ausern, auserp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_auser
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_auser
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhisen.User.entity.TbAuser" >
+    insert into tb_auser (aid, ausern, auserp
+      )
+    values (#{aid,jdbcType=INTEGER}, #{ausern,jdbcType=VARCHAR}, #{auserp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhisen.User.entity.TbAuser" >
+    insert into tb_auser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="ausern != null" >
+        ausern,
+      </if>
+      <if test="auserp != null" >
+        auserp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="ausern != null" >
+        #{ausern,jdbcType=VARCHAR},
+      </if>
+      <if test="auserp != null" >
+        #{auserp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhisen.User.entity.TbAuser" >
+    update tb_auser
+    <set >
+      <if test="ausern != null" >
+        ausern = #{ausern,jdbcType=VARCHAR},
+      </if>
+      <if test="auserp != null" >
+        auserp = #{auserp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhisen.User.entity.TbAuser" >
+    update tb_auser
+    set ausern = #{ausern,jdbcType=VARCHAR},
+      auserp = #{auserp,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>
