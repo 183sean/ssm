@@ -16,4 +16,8 @@ public interface TbDmNewMapper {
     int updateByPrimaryKeyWithBLOBs(TbDmNew record);
 
     int updateByPrimaryKey(TbDmNew record);
+
+
+
+    TbDmNew selectByPrimaryKey1();
 }

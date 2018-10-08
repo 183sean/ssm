@@ -8,4 +8,5 @@ import com.zhisen.User.entity.TbUser;
  */
 public interface UserService {
     TbUser login(String name, String password);
+//    TbUser register(String username, String password, String sex, String email);
 }

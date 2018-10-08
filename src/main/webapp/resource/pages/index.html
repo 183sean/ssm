@@ -5,6 +5,7 @@
 	<title>首页</title>
 	<link rel="stylesheet" href="./resource/css/all_a.css" />
 	<link rel="stylesheet" href="./resource/css/style.css">
+	<script src="./resource/js/jquery-3.3.1.min.js"></script>
 </head>
 
 
@@ -37,6 +38,7 @@
 		<script src="./resource/js/jquery.min.js"></script>
 		<script src="./resource/js/YuxiSlider.jQuery.min.js"></script>
 		<script>
+
             $(".slider").YuxiSlider({
                 width:600, //容器宽度
                 height:360, //容器高度
@@ -58,11 +60,11 @@
 			<li><a href="#">小说</a></li>
 		</ul>
 		<br />
-		<p>
-			<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />
-			<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />
-			<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />
-			<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />
+		<p id="test">
+			<!--<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />-->
+			<!--<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />-->
+			<!--<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />-->
+			<!--<a href="#">活动：什么！？紫苑炎魂只需20块钱？</a><br />-->
 		</p>
 	</article>
 
@@ -77,3 +79,24 @@
 
 </body>
 </html>
+<script type="text/javascript">
+$(document).ready(function() {
+    $.ajax({
+		url: "./indexDm",//后台请求的数据
+		type : "post",//请求方式
+        data: JSON.stringify(""),
+		dataType : "json",//数据格式
+        contentType: "application/json",
+		// async : false,//是否异步请求
+		success : function(data) {   //如果请求成功，返回数据。
+            console.log(data);
+		var html = "";
+		for(var i=0;i<data.length;i++){    //遍历data数组
+		var ls = data[i];     
+		html +="<a>"+ls.dmtitle+"</a><br />";
+		}
+    		$("#test").html(html); //在html页面id=test的标签里显示html内容
+                },
+            })
+        })
+</script>

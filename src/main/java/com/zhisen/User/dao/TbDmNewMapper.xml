@@ -11,6 +11,12 @@
   <resultMap id="ResultMapWithBLOBs" type="com.zhisen.User.entity.TbDmNew" extends="BaseResultMap" >
     <result column="dmarticle" property="dmarticle" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+  <!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->
+  <select id="selectByPrimaryKey1" resultType="com.zhisen.User.entity.TbDmNew">
+		select dmtitle from tb_dm_new order by dmid DESC limit 3
+  </select>
+
   <sql id="Base_Column_List" >
     dmid, dmtitle, dmpic, dmtime, dmstate
   </sql>

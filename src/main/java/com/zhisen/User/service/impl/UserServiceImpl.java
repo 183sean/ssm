@@ -22,5 +22,12 @@ public class UserServiceImpl implements UserService{
         return tbUser;
     }
 
+//    @Override
+//    public TbUser insert(String username, String password, String sex, String email) {
+//        TbUser record[] = {username, password, sex, email};
+//        TbUser tbUser = tbUserMapper.insert(record[]);
+//        return tbUser;
+//    }
+
 
 }
